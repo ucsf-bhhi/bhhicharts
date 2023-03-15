@@ -1,0 +1,11 @@
+Package: bhhicharts
+Type: Package
+Title: Interactive Charts for BHHI
+Version: 0.1.0
+Authors@R: person("Eve", "Perry", "eve.perry@ucsf.edu", role = c("aut", "cre")) 
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: Creates interactive charts and provides infrastructure for
+    embedding them on the BHHI website.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
