@@ -21,7 +21,7 @@
     <select id="chart-picker">
   {{ /chart_picker }}
     {{ #chart_picker_text }}
-    <option value="{{ value }}">{{ text }}</option>
+    <option {{ value }}>{{ text }}</option>
     {{ /chart_picker_text }}
   {{ #chart_picker }}
     </select>
@@ -31,7 +31,7 @@
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         const chart = Highcharts.chart('chart-container', {{{ initial_chart }}});
-      });      
+      });
     </script>
     {{ #chart_picker }}
     <script>
