@@ -5,8 +5,6 @@
 #'
 #' @inheritParams chart_to_json
 #' @param path The location of the JSON file.
-#'
-#' @export
 export_chart_data = function(x, path) {
   chart_json = chart_to_json(x)
 
