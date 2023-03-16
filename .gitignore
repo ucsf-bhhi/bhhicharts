@@ -10,3 +10,4 @@ chart-data/
 *.html
 
 !inst/**/*
+!tests/**/*.html
