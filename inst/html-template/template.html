@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+  <title>{{ page_title }}</title>
+
+  <link href="css/styles.css" type="text/css">
+  <script src="https://code.highcharts.com/9.3.1/highcharts.js"></script>
+  <script src="https://code.highcharts.com/9.3.1/modules/accessibility.js"></script>
+  <script src="https://code.highcharts.com/9.3.1/modules/exporting.js"></script>
+  <script src="js/bhhiTheme.js"></script>
+  {{ #chart_data }}<script src="{{ chart_data }}"></script>{{ /chart_data }}
+</head>
+
+<body>
+  {{ #chart_picker }}
+  <div>
+    <select id="chart-picker">
+  {{ /chart_picker }}
+    {{ #chart_picker_text }}
+    <option value="{{ value }}">{{ text }}</option>
+    {{ /chart_picker_text }}
+  {{ #chart_picker }}
+    </select>
+  </div>
+  {{ /chart_picker }}
+  <div id="chart-container" class="chart">
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const chart = Highcharts.chart('chart-container', {{{ initial_chart }}});
+      });      
+    </script>
+    {{ #chart_picker }}
+    <script>
+      document.getElementById('chart-picker').addEventListener('change', (event) => {
+        const chart = Highcharts.chart('chart-container', chartData[event.target.value]);
+      });
+    </script>
+    {{ /chart_picker }}
+  </div>
+</body>
+</html>
