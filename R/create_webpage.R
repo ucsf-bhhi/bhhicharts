@@ -128,7 +128,3 @@ build_read_path_rel = function(root_dir, write_path) {
 
   fs::path_join(read_path_components)
 }
-
-is.highchartzero = function(x) {
-  inherits(x, "highchartzero")
-}
