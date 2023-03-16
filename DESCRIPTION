@@ -2,8 +2,8 @@ Package: bhhicharts
 Type: Package
 Title: Interactive Charts for BHHI
 Version: 0.1.0
-Authors@R: person("Eve", "Perry", "eve.perry@ucsf.edu", role = c("aut", "cre")) 
-Maintainer: The package maintainer <yourself@somewhere.net>
+Authors@R: person("Eve", "Perry", email = "eve.perry@ucsf.edu",
+  role = c("aut", "cre")) 
 Description: Creates interactive charts and provides infrastructure for
     embedding them on the BHHI website.
 License: MIT + file LICENSE
@@ -11,3 +11,16 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/ucsf-bhhi/bhhicharts
 BugReports: https://github.com/ucsf-bhhi/bhhicharts/issues
+Imports: 
+    fs,
+    highcharter,
+    jsonlite,
+    purrr,
+    whisker
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Depends: 
+    R (>= 2.10)
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
