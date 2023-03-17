@@ -2,7 +2,8 @@
 #'
 #' @param chart_objects Either a single `highcharterzero` object or a list of
 #'   `highcharterzero` objects.
-#' @param path The location of the rendered html file.
+#' @param html_filename Name of the saved html file.
+#' @param root_dir Path to the webpage root directory
 #' @param page_title The text for page's `title` element.
 #' @param initial_chart The name of the list element with the initial chart to
 #'   show when the page is first loaded.
@@ -75,7 +76,7 @@ create_webpage = function(
 
   whisker::whisker.render(
     readLines(
-      fs::path_package("bhhicharts", "inst","html-template","template.html")
+      fs::path_package("bhhicharts", "html-template","template.html")
     ),
     list(
       page_title = page_title,
@@ -113,6 +114,7 @@ initial_chart_json = function(chart_objects, initial_chart) {
 #' Copies an HTML dependency from the package template into the current working
 #' directory.
 #'
+#' @param root_dir Path to the webpage root directory
 #' @param ... Path to the dependency
 #'
 #' @examplesIf interactive()
@@ -130,7 +132,7 @@ add_dependency = function(root_dir, ...) {
     read_path_rel = build_read_path_rel(root_dir, write_path)
 
     fs::file_copy(
-      fs::path_package("bhhicharts", "inst", read_path_rel),
+      fs::path_package("bhhicharts", read_path_rel),
       write_path
     )
   }

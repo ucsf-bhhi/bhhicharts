@@ -4,9 +4,11 @@
 \alias{add_dependency}
 \title{Add HTML dependency}
 \usage{
-add_dependency(...)
+add_dependency(root_dir, ...)
 }
 \arguments{
+\item{root_dir}{Path to the webpage root directory}
+
 \item{...}{Path to the dependency}
 }
 \description{

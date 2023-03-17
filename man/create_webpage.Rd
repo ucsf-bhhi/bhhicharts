@@ -6,8 +6,9 @@
 \usage{
 create_webpage(
   chart_objects,
-  path,
-  page_title,
+  html_filename,
+  root_dir = ".",
+  page_title = "Chart",
   initial_chart = NULL,
   chart_picker_text = NULL,
   view = TRUE
@@ -17,7 +18,9 @@ create_webpage(
 \item{chart_objects}{Either a single \code{highcharterzero} object or a list of
 \code{highcharterzero} objects.}
 
-\item{path}{The location of the rendered html file.}
+\item{html_filename}{Name of the saved html file.}
+
+\item{root_dir}{Path to the webpage root directory}
 
 \item{page_title}{The text for page's \code{title} element.}
 
