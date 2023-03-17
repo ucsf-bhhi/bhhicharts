@@ -123,8 +123,7 @@ add_dependency = function(root_dir, ...) {
 build_read_path_rel = function(root_dir, write_path) {
   write_path_components = fs::path_split(write_path)[[1]]
   root_path_components = fs::path_split(root_dir)[[1]]
-  read_path_components =
     write_path_components[!(write_path_components %in% root_path_components)]
 
-  fs::path_join(read_path_components)
+  fs::path_join(relative_path_components)
 }
