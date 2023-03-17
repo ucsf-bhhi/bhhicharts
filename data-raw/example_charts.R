@@ -22,6 +22,17 @@ series3 = highcharter::highchartzero() |>
   ) |>
   highcharter::hc_legend(title = list(text = "gear"))
 
-example_charts = list(chart1 = series1, chart2 = series2, chart3 = series3)
+series4 = hchart(
+  dplyr::select(mtcars, wt, mpg, cyl),
+  "scatter",
+  hcaes(x = wt, y = mpg, group = cyl)
+) |>
+  hc_xAxis(title = list(text = "Weight")) |>
+  hc_yAxis(title = list(text = "MPG")) |>
+  hc_legend(title = list(text = "Cylinders"))
+
+example_charts = list(
+  chart1 = series1, chart2 = series2, chart3 = series3, chart4 = series4
+)
 
 usethis::use_data(example_charts, overwrite = TRUE)
