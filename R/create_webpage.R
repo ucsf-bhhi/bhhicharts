@@ -59,7 +59,9 @@ create_webpage = function(
     fs::dir_create(root_dir, "chart-data")
 
     chart_data_path = fs::path(
-      root_dir, "chart-data", paste0(fs::path_ext_remove(html_filename), "_data"),
+      root_dir,
+      "chart-data",
+      glue::glue("{fs::path_ext_remove(html_filename)}_data"),
       ext = "js"
     )
 
