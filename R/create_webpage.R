@@ -27,7 +27,7 @@ create_webpage = function(
     initial_chart = NULL, chart_picker_text = NULL, view = TRUE
 ) {
   chart_picker = FALSE
-  if (length(chart_objects) > 1 & !highcharter::is.highchart(chart_objects)) {
+  if (has_multiple_charts(chart_objects)) {
     chart_picker = TRUE
 
     if (is.null(chart_picker_text))
@@ -45,7 +45,7 @@ create_webpage = function(
   }
 
   chart_data_path = NULL
-  if (length(chart_objects) > 1 & !highcharter::is.highchart(chart_objects)) {
+  if (has_multiple_charts(chart_objects)) {
     fs::dir_create(root_dir, "chart-data")
 
     chart_data_path = fs::path(
@@ -83,7 +83,7 @@ create_webpage = function(
 }
 
 initial_chart_json = function(chart_objects, initial_chart) {
-  if (length(chart_objects) == 1 | highcharter::is.highchart(chart_objects)) {
+  if (!has_multiple_charts(chart_objects)) {
     initial_chart = chart_objects
   } else {
     if (is.null(initial_chart)) {
