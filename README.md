@@ -7,6 +7,7 @@
 
 [![Codecov test
 coverage](https://codecov.io/gh/ucsf-bhhi/bhhicharts/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ucsf-bhhi/bhhicharts?branch=main)
+[![R-CMD-check](https://github.com/ucsf-bhhi/bhhicharts/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ucsf-bhhi/bhhicharts/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 bhhicharts helps create interactive charts and provides infrastructure
@@ -39,8 +40,6 @@ library(highcharter)
 #> Registered S3 method overwritten by 'quantmod':
 #>   method            from
 #>   as.zoo.data.frame zoo
-#> Highcharts (www.highcharts.com) is a Highsoft software product which is
-#> not free for commercial and Governmental use
 
 scatter_chart = hchart(mtcars, "scatter", hcaes(x = wt, y = mpg, group = cyl)) |> 
   hc_xAxis(title = list(text = "Weight")) |>
