@@ -9,7 +9,8 @@ Description: Creates interactive charts and provides infrastructure for
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-URL: https://github.com/ucsf-bhhi/bhhicharts
+URL: https://github.com/ucsf-bhhi/bhhicharts,
+    https://ucsf-bhhi.github.io/bhhicharts/
 BugReports: https://github.com/ucsf-bhhi/bhhicharts/issues
 Imports: 
     fs,

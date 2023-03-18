@@ -11,3 +11,4 @@ chart-data/
 
 !inst/**/*
 !tests/**/*.html
+docs
