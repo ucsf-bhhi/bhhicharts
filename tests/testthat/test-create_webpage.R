@@ -1,6 +1,6 @@
 test_dependency = function(root_dir, ...) {
   compare_file_text(
-    fs::path_package("bhhicharts", "inst", ...),
+    fs::path_package("bhhicharts", ...),
     fs::path(root_dir, ...)
   )
 }
