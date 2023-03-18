@@ -6,3 +6,5 @@
 ^css$
 ^js$
 ^img$
+^README\.Rmd$
+^readme-img$
