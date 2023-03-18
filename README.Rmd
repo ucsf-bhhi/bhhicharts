@@ -1,0 +1,128 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# bhhicharts
+
+<!-- badges: start -->
+
+<!-- badges: end -->
+
+bhhicharts helps create interactive charts and provides infrastructure for embedding them on the BHHI website.
+
+It can take a single chart or set of related charts and render them on a simple webpage that can then be embedded on the BHHI Drupal site.
+
+## Installation
+
+You can install bhhicharts from [GitHub](https://github.com/ucsf-bhhi/bhhicharts) with:
+
+``` r
+# install.packages("remotes")
+remotes::install_github("ucsf-bhhi/bhhicharts")
+```
+
+## Use
+
+bhhicharts relies on the [highcharter](https://jkunst.com/highcharter/) package to create the charts.
+
+### Single chart
+
+After creating a chart:
+
+```{r}
+library(highcharter)
+
+scatter_chart = hchart(mtcars, "scatter", hcaes(x = wt, y = mpg, group = cyl)) |> 
+  hc_xAxis(title = list(text = "Weight")) |>
+  hc_yAxis(title = list(text = "MPG")) |>
+  hc_legend(title = list(text = "Cylinders"))
+```
+
+It can be rendered in a simple webpage with the BHHI theme and logo applied. The webpage can then be embedded into the BHHI Drupal site.
+
+```{r, eval=FALSE}
+dir = tempdir()
+
+bhhicharts::create_webpage(
+  scatter_chart, html_filename = "scatter-chart.html", root_dir = dir
+)
+```
+
+```{r, echo=FALSE, include=FALSE, eval=FALSE}
+webshot::webshot(
+  fs::path(dir, "scatter-chart.html"),
+  delay = 1,
+  zoom = 2,
+  selector = "body",
+  "readme-img/scatter-chart.png"
+)
+#### Screenshot of rendered webpage
+# ![Screenshot of rendered webpage](readme-img/scatter-chart.png)
+```
+
+### Multiple charts
+
+bhhicharts can also render a webpage with a chart picker that allows the viewer to choose between multiple charts. This can be useful, for example, to show different visualizations of the data or different demographic groupings.
+
+After creating another chart and putting the charts in a named list:
+
+```{r}
+column_chart = mtcars |>
+  dplyr::count(cyl, gear) |> 
+  hchart("column", hcaes(x = cyl, y = n, group = gear)) |>
+  highcharter::hc_plotOptions(column = list(stacking = "normal")) |> 
+  highcharter::hc_xAxis(title = list(text = "Cylinders")) |>  
+  highcharter::hc_yAxis(title = list(text = "Count")) |>
+  highcharter::hc_legend(title = list(text = "Gears"))
+
+charts = list("Column" = column_chart, "Scatter" = scatter_chart)
+```
+
+The set of charts can be rendered into a webpage:
+
+```{r, eval=FALSE}
+bhhicharts::create_webpage(
+  charts, html_filename = "multiple-charts.html", root_dir = dir
+)
+```
+
+```{r, echo=FALSE, include=FALSE, eval=FALSE}
+webshot::webshot(
+  fs::path(dir, "multiple-charts.html"),
+  delay = 2,
+  zoom = 2,
+  selector = "body",
+  "readme-img/multiple-charts-column.png"
+)
+
+webshot::webshot(
+  url = fs::path(dir, "multiple-charts.html"),
+  selector = "body",
+  delay = 10,
+  zoom = 2,
+  file = "readme-img/multiple-charts-scatter.png",
+  eval = "casper.then(function() {
+    this.evaluate(function() {
+      Highcharts.chart('chart-container', chartData['Scatter']);
+      document.getElementById('chart-picker')[1].selected = 'selected';
+    });
+  });"
+)
+
+#### Screenshot of first chart
+# ![Screenshot of first chart](readme-img/multiple-charts-column.png)
+
+#### Screenshot of second chart
+# ![Screenshot of second chart](readme-img/multiple-charts-scatter.png)
+```
