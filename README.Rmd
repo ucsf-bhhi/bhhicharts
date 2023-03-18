@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 
+[![Codecov test coverage](https://codecov.io/gh/ucsf-bhhi/bhhicharts/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ucsf-bhhi/bhhicharts?branch=main)
 <!-- badges: end -->
 
 bhhicharts helps create interactive charts and provides infrastructure for embedding them on the BHHI website.

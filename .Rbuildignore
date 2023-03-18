@@ -8,3 +8,5 @@
 ^img$
 ^README\.Rmd$
 ^readme-img$
+^codecov\.yml$
+^\.github$
